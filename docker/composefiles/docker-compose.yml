@@ -1,0 +1,39 @@
+version: '2'
+services:
+  vocab-reverseproxy:
+    image: registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/idsvocabularyprovider/reverseproxy-vocol
+    ports:
+    - "443:443" # IDS-HTTP API
+    - "8080:8080" # Self-Description
+
+  vocab-core:
+    image: registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/idsvocabularyprovider/eis-vocab 
+    volumes:
+      - ./../reverseproxy-vocol/cert:/etc/cert/
+    environment:
+    - SPARQL_ENDPOINT=http://vocab-fuseki:3030/connectorData
+    - VOCOL_ENDPOINT=http://vocab-vocol:8888
+    - SHACL_VALIDATION=false
+#    - DAPS_VALIDATE_INCOMING=true
+    expose:
+    - "8080"
+
+  vocab-fuseki:
+    image: registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/idsvocabularyprovider/fuseki
+    volumes:
+      - vocab-fuseki:/fuseki
+    expose:
+    - "3030"
+    ports:
+    - "3030:3030"
+
+  vocab-vocol:
+    image: registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/vocol
+    expose:
+    - "8888"
+    ports:
+    - "8888:8888"
+    command: [ "npm", "start","8888", "3030", "http://vocab-fuseki"]
+
+volumes:
+    vocab-fuseki:
