@@ -1,0 +1,39 @@
+// To run prometheus
+docker run --name prometheus --rm -p 9090:9090   -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml   prom/prometheus:v2.20.1
+
+
+// To run without customized settings
+docker run --name grafana --rm -p 3000:3000   -e GF_AUTH_DISABLE_LOGIN_FORM=true   -e GF_AUTH_ANONYMOUS_ENABLED=true   -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin   -v `pwd`/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml   grafana/grafana:7.1.5
+
+
+
+// To run with custom grafana.ini with customized domain settings
+docker run --name grafana --rm -p 3000:3000   -e GF_AUTH_DISABLE_LOGIN_FORM=true   -e GF_AUTH_ANONYMOUS_ENABLED=true   -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin   -v `pwd`/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml -v `pwd`/grafana.ini:/etc/grafana/grafana.ini  grafana/grafana
+
+
+
+
+
+
+
+
+// Apache 2 proxy settings
+
+    ProxyPreserveHost On
+    ProxyRequests On
+    RewriteRule ^/grafana$ grafana/ [R]
+    ProxyPass /grafana http://localhost:3000
+    ProxyPassReverse /grafana http://localhost:3000
+
+
+
+
+#nginx reverse proxy
+        location /grafana/ {
+            proxy_pass http://vocab-grafana:3000/;
+        }
+
+
+
+nodejs dashboard import code
+12230

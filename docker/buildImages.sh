@@ -4,13 +4,13 @@
 #docker login -u user -p token registry.gitlab.cc-asp.fraunhofer.de
 
 # broker-vocabulary
-docker pull registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/idsvocabularyprovider/eis-vocab 
+docker pull idsvocabularyprovider/eis-vocab 
 
 # vocol
-docker pull  registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/vocol
+docker pull  idsvocabularyprovider/vocol
 
 # fuseki
-docker build fuseki/ -t registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/idsvocabularyprovider/fuseki
+docker build fuseki/ -t idsvocabularyprovider/fuseki
 
 # reverseproxy
-docker build reverseproxy-vocol/ -t registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/idsvocabularyprovider/reverseproxy-vocol
+docker build reverseproxy-vocol/ -t reverseproxy-vocol
