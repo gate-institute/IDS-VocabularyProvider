@@ -187,41 +187,13 @@ let acceptHeader4SourceCode = "";
   
               console.log(openIE[indexTop].object)
   
-              let queryNlp = `SELECT ?s ?p ?o {
-                   ?s ?p ?o
-                   FILTER regex(str(?s), "Cassandra")
-                }`
+              let queryNlp = `SELECT DISTINCT ?item
+              WHERE
+              {
+               ?item ?o ?itemLabel .
+                FILTER ( ?itemLabel = "${openIE[indexTop].subject}" ) .
+              }`
   
-             
-                // PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-                // SELECT DISTINCT ?item
-                //               WHERE
-                //               {
-                //               ?item rdfs:label ?itemLabel .
-                //               FILTER ( ?itemLabel = "Store" ) .}
-  
-  
-  
-                // CONSTRUCT {
-                //   ?s ?p ?o
-                // }
-                // WHERE {
-                //  ?s ?p ?o
-                //  FILTER regex(str(?s), "Cassandra")  
-                // }
-                
-  
-  
-  
-              // `SELECT ?subject ?predicate ?object 
-              // WHERE {  ?subject ?predicate ?object} 
-              // LIMIT 25
-              // `
-  
-            //   SELECT ?s ?p ?o {
-            //     ?s ?p ?o
-            //     FILTER regex(str(?s), "Cassandra")
-            //  }
   
   
               // acceptHeader4SourceCode = "application/ld+json"
@@ -238,6 +210,7 @@ let acceptHeader4SourceCode = "";
                 url: endpoint + 'query?query=' + queryNlp
               }, function (error, response, body) {
                 if (error) {
+                  console.log(error)
                   //          res.json({
                   //            textStatus: response.statusCode,
                   //            errorThrown: error
