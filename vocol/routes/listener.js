@@ -267,6 +267,15 @@ router.post('/', function(req, res) {
               // show the cuurent path
               shell.exec('pwd');
 
+              // Insert RDF into fuseki-server and vocol
+              shell.exec('curl -X PUT -H "Authorization: Basic $(echo -n admin:indasp123! | base64)"  -H Content-Type:text/turtle -G ' + req.app.locals.fusekiURL   + ":" + (req.app.locals.fusekiPortNumber || 3030) + '/connectorData   --data-urlencode graph=default   -T  ../serializations/SingleVoc.nt  ', {
+              silent: false
+               });
+  
+              console.log('curl -X PUT -H "Authorization: Basic $(echo -n admin:indasp123! | base64)"  -H Content-Type:text/turtle -G ' + req.app.locals.fusekiURL   + ":" + (req.app.locals.fusekiPortNumber || 3030) + '/connectorData   --data-urlencode graph=default   -T  ../serializations/SingleVoc.nt  ' )
+  
+
+
               //////////////////////////////
               // update queries in fuseki //
               /////////////////////////////
@@ -400,6 +409,8 @@ router.post('/', function(req, res) {
               shell.cd('../../../.').stdout;
 
             }
+          
+            res.send(req.body);
           }
         } catch (e) {
           console.log("error:");

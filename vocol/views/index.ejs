@@ -9,7 +9,7 @@
       <div class="six wide column">
         <%if (metaData !="") {%>
         <div class="row">
-          <h3 class="ui header" style="rgba(243, 238, 238, 0.87)">
+          <h3 class="ui header">
             <i class="newspaper icon"></i>
             <div class="content">
               Ontology Metadata
@@ -18,8 +18,8 @@
           <table class="ui blue fixed table" id="metaData">
           </table>
           <%}%>
-          <h3 class="ui header" style="rgba(243, 238, 238, 0.87)">
-            <i class="chart bar icon"></i>
+          <h3 class="ui header">
+            <i class="chart bar icon" style="color:darkslategray"></i>
             <div class="content">
               Ontology Statistics
             </div>
@@ -27,8 +27,8 @@
           <table class="ui red  table" id="response">
             <%- statistics %>
           </table>
-          <h3 class="ui header" style="rgba(243, 238, 238, 0.87)">
-            <i class="info circle icon"></i>
+          <h3 class="ui header">
+            <i class="info circle icon" style="color:darkslategray"></i>
             <div class="content">
               Project Details
             </div>
@@ -57,9 +57,11 @@
           padding-top: 5px !important;
           padding: 5px;
         }
+        /*
         .ui.table {
           font-size: 12px;
         }
+        */
         h3.ui.header {
           font-size: 1.28571429rem;
           margin-bottom: -4px;
@@ -70,9 +72,7 @@
         }
         a {
           text-decoration: none;
-          font-weight:
-            normal;
-           !important;
+          font-weight:normal !important;
         } 
       </style>
       <script>

@@ -24,6 +24,10 @@ var proxy = require('express-http-proxy');
 var shell = require('shelljs');
 var session = require('express-session');
 var escapeHtml = require('escape-html');
+
+const apiMetrics = require('prometheus-api-metrics');
+app.use(apiMetrics());
+
 var url = process.argv[4]+":" + (process.argv[3] || 3030) + "/connectorData/sparql"
 
 console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
