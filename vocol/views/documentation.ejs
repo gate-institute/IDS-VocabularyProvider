@@ -1440,9 +1440,9 @@
           if (isURIExist) {
             var endpoint = "./fuseki/dataset/sparql?query="
             if (!anotherQuery)
-              var querystring = 'CONSTRUCT{<' + encodeURIComponent(conceptURI) + '> ?p ?o .}WHERE {<' + encodeURIComponent(conceptURI) + '> ?p ?o .}';
+              var querystring = 'CONSTRUCT{<' + conceptURI + '> ?p ?o .}WHERE {<' + conceptURI + '> ?p ?o .}';
             else
-              var querystring = 'CONSTRUCT{ ?s ?p <' + encodeURIComponent(conceptURI) + '> .}WHERE { ?s ?p <' + encodeURIComponent(conceptURI) + '> .}';
+              var querystring = 'CONSTRUCT{ ?s ?p <' + conceptURI + '> .}WHERE { ?s ?p <' + conceptURI + '> .}';
             $('div.yasqe').empty();
             $.ajax({
               type: 'POST',
