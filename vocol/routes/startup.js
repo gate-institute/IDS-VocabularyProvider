@@ -6,6 +6,7 @@ var jsonfile = require('jsonfile');
 var shell = require('shelljs');
 var router = express.Router();
 var path = require('path');
+var CryptoJS = require("crypto-js");
 
 router.get('/', function(req, res) {
   app.use(bodyParser.urlencoded({
@@ -50,7 +51,7 @@ router.get('/', function(req, res) {
           //TODO*:check the correct format to login with username and password
           // check if the localRepository same same entered config
           if (localRepository === obj.repositoryURL ||
-            localRepository === 'https://' + obj.user + ':' + obj.password +
+            localRepository === 'https://' + obj.user + ':' + encodeURIComponent(CryptoJS.AES.decrypt(obj.password.toString(), obj.user).toString(CryptoJS.enc.Utf8)) +
             '@' + obj.repositoryURL.slice(8)) {
             console.log('ready to pull');
             shell.exec('git checkout ' + obj.branchName, {
@@ -68,7 +69,7 @@ router.get('/', function(req, res) {
             //TODO*:change  the following login
             if (obj.repositoryType === "private")
               shell.exec('git clone https://"' + obj.user + ":" +
-                encodeURIComponent(obj.password) + "@" +
+              encodeURIComponent(CryptoJS.AES.decrypt(obj.password.toString(), obj.user).toString(CryptoJS.enc.Utf8)) + "@" +
                 repositoryURL.slice(8) + '" repoFolder', {
                   silent: false
                 }).stdout;
