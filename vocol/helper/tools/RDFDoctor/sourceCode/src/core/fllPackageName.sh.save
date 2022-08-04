@@ -1,3 +1,0 @@
-ex -sc '1i|package antlr4;
-
-' -cx TurtleParser.java 

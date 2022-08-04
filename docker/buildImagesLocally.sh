@@ -17,5 +17,5 @@ docker build reverseproxy-vocol/ -t idsvocabularyprovider/reverseproxy-vocol
 
 
 # vocol
-docker build ../vocol/ -t idsvocabularyprovider/vocol
-
+#docker build ../vocol/ -t idsvocabularyprovider/vocol
+docker pull registry.gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/vocol:latest
