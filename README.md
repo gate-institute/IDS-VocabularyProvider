@@ -16,13 +16,21 @@ which is described in the following. We assume that the Docker command line tool
 2. __Verify docker images__: To verify 4 images run command ```docker images```. 
 3. __Run the instance__: Navigate to ```Idsvocabularyprovider/docker/composefiles``` and run ```docker-compose up```.   
 
+Note: 
+The code & image for Vocol is at (https://gitlab.cc-asp.fraunhofer.de/vocoreg/public-ids-vp/vocol)
+
+It is already included in the docker-compose file
+
+
+
+
 ## Using the VocabularyProvider
 
 Assuming the vocabularyprovider and its services are running on ```localhost```, it now provides an
 
 * __Interface GUI__, running on the (https://localhost/vocob/)
 
-* __Fuseki__, running on the (http://localhost/fuseki/). 
+* __Fuseki__, running on the (https://localhost/fuseki/). 
 
 To Create an instance you have to navigate to (https://localhost/vocob/) on the browser. The steps are the following:
 1. __General Info__: 
