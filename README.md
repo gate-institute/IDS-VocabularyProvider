@@ -12,7 +12,7 @@ The IDS vocabulary provider is developed especially for the Plugfest community, 
 The steps for bringing up a VocabularyProvider instance depends on the host where it should be deployed. The easiest option is to run the instance on ```localhost```,
 which is described in the following. We assume that the Docker command line tools are installed on your system and that you are using a Linux shell.
 
-1. __Pull and build the docker images__: Navigate to ```Idsvocabularyprovider/docker``` and run command from terminal ```./buildImages.sh```. This will create 4 docker images broker-vocabulary,vocol,fuseki & reverseproxy.
+1. __Pull and build the docker images__: Navigate to ```Idsvocabularyprovider/docker``` and run command from terminal ```./buildImagesLocally.sh```. This will create 4 docker images broker-vocabulary,vocol,fuseki & reverseproxy.
 2. __Verify docker images__: To verify 4 images run command ```docker images```. 
 3. __Run the instance__: Navigate to ```Idsvocabularyprovider/docker/composefiles``` and run ```docker-compose up```.   
 
