@@ -32,6 +32,8 @@ Assuming the vocabularyprovider and its services are running on ```localhost```,
 
 * __Fuseki__, running on the (https://localhost/fuseki/). 
 
+* __Grafana__, running on the (https://localhost/grafana/). 
+
 To Create an instance you have to navigate to (https://localhost/vocob/) on the browser. The steps are the following:
 1. __General Info__: 
       * Name of the vocabulary (e-g generally name of the repository). 
