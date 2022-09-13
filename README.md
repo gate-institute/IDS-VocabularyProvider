@@ -34,6 +34,8 @@ Assuming the vocabularyprovider and its services are running on ```localhost```,
 
 * __Grafana__, running on the (https://localhost/grafana/). 
 
+Grafana Dashboard configuration file location /docker/grafana/NodeJS-Dashboard.json
+
 To Create an instance you have to navigate to (https://localhost/vocob/) on the browser. The steps are the following:
 1. __General Info__: 
       * Name of the vocabulary (e-g generally name of the repository). 
@@ -51,4 +53,6 @@ To Create an instance you have to navigate to (https://localhost/vocob/) on the 
 3. __Additional Services__: Select services to include. 
 
 4. __Homepage Description__: Description to show on the homepage of instance. 	  
+
+ 
 
