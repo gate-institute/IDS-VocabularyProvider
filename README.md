@@ -34,7 +34,8 @@ Assuming the vocabularyprovider and its services are running on ```localhost```,
 
 * __Grafana__, running on the (https://localhost/grafana/). 
 
-Grafana Dashboard configuration file location /docker/grafana/NodeJS-Dashboard.json
+Grafana Dashboard configuration file location /docker/grafana/NodeJS-Dashboard.json 
+Then it will display information regarding the application metrics
 
 To Create an instance you have to navigate to (https://localhost/vocob/) on the browser. The steps are the following:
 1. __General Info__: 
