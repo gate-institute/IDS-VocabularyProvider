@@ -92,7 +92,7 @@ public class AppConfig extends AppConfigTemplate {
 
         //TODO: Does not work in the case that the catalog is empty
         DescriptionProvider descriptionProvider = new DescriptionProvider(selfDescriptionProvider.getSelfDescription(), repositoryFacade, catalogUri);
-        DescriptionRequestHandler descriptionHandler = new DescriptionRequestHandler(descriptionProvider, securityTokenProvider, responseSenderAgent, selfDescriptionProvider.getSelfDescription().getMaintainer(), selfDescriptionProvider.getSelfDescription().getOutboundModelVersion(), vocolAddress);
+        DescriptionRequestHandler descriptionHandler = new DescriptionRequestHandler(descriptionProvider, securityTokenProvider, responseSenderAgent, selfDescriptionProvider.getSelfDescription().getId(), selfDescriptionProvider.getSelfDescription().getOutboundModelVersion(), vocolAddress);
         component.addMessageHandler(descriptionHandler, RequestType.INFRASTRUCTURE);
         component.addMessageHandler(queryHandler, RequestType.INFRASTRUCTURE);
         logger.info(String.valueOf(queryHandler));

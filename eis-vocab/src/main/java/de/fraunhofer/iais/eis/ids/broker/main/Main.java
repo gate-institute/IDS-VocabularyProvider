@@ -20,6 +20,8 @@
 
 package de.fraunhofer.iais.eis.ids.broker.main;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.fraunhofer.iais.eis.ids.component.core.InfomodelFormalException;
 import de.fraunhofer.iais.eis.ids.component.protocol.http.server.ComponentInteractorProvider;
@@ -40,6 +42,10 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Objects;
 
+import java.io.FileInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+
 /**
  * Entry point to the Broker
  */
@@ -48,6 +54,8 @@ import java.util.Objects;
 @ComponentScan(basePackages = {"de.fraunhofer.iais.eis.ids.component.protocol.http.server"})
 public class Main extends MainTemplate implements ComponentInteractorProvider {
 
+    Logger logger = LoggerFactory.getLogger(Main.class);
+    
     //Environment allows us to access application.properties
     private final Environment env;
     //Initializing properties which are not inherited from MainTemplate
@@ -66,6 +74,9 @@ public class Main extends MainTemplate implements ComponentInteractorProvider {
     @Value("${infomodel.validateWithShacl}")
     private boolean validateShacl;
 
+    @Value("${ssl.javakeystore}")
+    public String javaKeystorePath;
+    
     @Autowired
     public Main(Environment env) {
         this.env = env;
@@ -96,6 +107,13 @@ public class Main extends MainTemplate implements ComponentInteractorProvider {
         trustAllCerts = Boolean.parseBoolean(env.getProperty("ssl.trustAllCerts"));
         ignoreHostName = Boolean.parseBoolean(env.getProperty("ssl.ignoreHostName"));
 
+        try {
+            javakeystore = new FileInputStream(new File(javaKeystorePath));
+            logger.info("Found KeyStore at {}.", javaKeystorePath);
+        } catch (FileNotFoundException e) {
+            logger.warn("Could not find a KeyStore at {}.", javaKeystorePath);
+        }
+	
         try {
             multipartComponentInteractor = new AppConfig(createSelfDescriptionProvider())
                     .sparqlEndpointUrl(sparqlEndpointUrl)

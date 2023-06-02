@@ -21,7 +21,7 @@ if [ ! -z "$DAPS_VALIDATE_INCOMING" ]; then
 fi
 
 # Enable debugging
-ARGS="${ARGS} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+#ARGS="${ARGS} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
 
 echo "ARGS=${ARGS}"
 

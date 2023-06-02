@@ -31,14 +31,14 @@
     <groupId>de.fraunhofer.iais.eis.ids</groupId>
     <artifactId>eis-vocab</artifactId>
     <packaging>jar</packaging>
-    <version>4.2.0</version>
+    <version>${revision}</version>
     <properties>
         <rdf4j.version>3.4.0</rdf4j.version>
         <jena.version>4.1.0</jena.version>
         <ids-components.version>${revision}</ids-components.version>
         <jackson.version>2.11.0</jackson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <revision>4.3.0</revision>
+        <revision>5.0.4</revision>
         <skipTests>true</skipTests>
     </properties>
     <dependencies>
@@ -98,7 +98,7 @@
         <repository>
             <id>eis-public-repo</id>
             <name>maven-public</name>
-            <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
+            <url>https://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
         </repository>
     </repositories>
     <licenses>
